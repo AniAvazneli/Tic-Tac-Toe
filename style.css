@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap');
+
 * {
     font-style: normal;
     margin: 0;
@@ -6,7 +7,7 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     background-color: #1A2A33;
@@ -14,7 +15,8 @@ body{
     font-family: 'Outfit';
     font-style: normal;
 }
-.newGame{
+
+.newGame {
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -24,12 +26,14 @@ body{
     margin-right: 24px;
     width: 327px;
 }
-.xoLogo{
+
+.xoLogo {
     width: 71.97px;
     height: 32px;
     margin-bottom: 32px;
 }
-.pickPlayer{
+
+.pickPlayer {
     height: 205px;
     width: 327px;
     border-radius: 15px;
@@ -39,7 +43,8 @@ body{
     flex-direction: column;
     align-items: center;
 }
-.headlinePickPlayer{
+
+.headlinePickPlayer {
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
@@ -49,7 +54,8 @@ body{
     margin-top: 24px;
     margin-bottom: 24px;
 }
-.choserXO{
+
+.choserXO {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -59,7 +65,8 @@ body{
     background: #1A2A33;
     margin-bottom: 17px;
 }
-.cheseOcube{
+
+.cheseOcube {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,11 +75,13 @@ body{
     border-radius: 10px;
     background: #A8BFC9;
 }
-.choseX{
+
+.choseX {
     padding-left: 58px;
     margin-right: 49px;
 }
-.reminder{
+
+.reminder {
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
@@ -82,7 +91,8 @@ body{
     mix-blend-mode: normal;
     opacity: 0.5;
 }
-.newGameCPU{
+
+.newGameCPU {
     font-family: 'Outfit';
     font-style: normal;
     height: 56px;
@@ -98,7 +108,8 @@ body{
     margin-top: 32px;
     margin-bottom: 16px;
 }
-.newGamePlayer{
+
+.newGamePlayer {
     font-family: 'Outfit';
     font-style: normal;
     height: 56px;
@@ -113,29 +124,32 @@ body{
     letter-spacing: 1px;
     color: #1A2A33;
 }
-.buttonText{
+
+.buttonText {
     margin-bottom: 22px;
     margin-top: 14px;
 }
 
-.startGame{
+.startGame {
     display: none;
     margin-top: 24px;
     margin-left: 24px;
     margin-right: 24px;
 }
 
-header{
+header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 64px;
 }
-.Hlogo{
+
+.Hlogo {
     width: 71.97px;
     height: 32px;
 }
-.turnSection{
+
+.turnSection {
     width: 96px;
     height: 40px;
     background: #1F3641;
@@ -148,17 +162,20 @@ header{
     padding-left: 15px;
     padding-right: 15px;
 }
-.turnImageX{
+
+.turnImageX {
     display: none;
     width: 16px;
     height: 16px;
 }
-.turnImageO{
+
+.turnImageO {
     /* display: none; */
     width: 16px;
     height: 16px;
 }
-.turnText{
+
+.turnText {
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 700;
@@ -168,7 +185,8 @@ header{
     letter-spacing: 0.875px;
     color: #A8BFC9;
 }
-.arrow{
+
+.arrow {
     width: 40px;
     height: 40px;
     background: #A8BFC9;
@@ -178,13 +196,15 @@ header{
     align-items: center;
     justify-content: center;
 }
-.playground{
+
+.playground {
     display: grid;
     grid-template-columns: auto auto auto;
     column-gap: 20px;
     row-gap: 20px;
 }
-.gamingButtons{
+
+.gamingButtons {
     width: 96px;
     height: 96px;
     background: #1F3641;
@@ -192,13 +212,15 @@ header{
     border-radius: 10px;
     border: 0px;
 }
-footer{
+
+footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 20px;
 }
-.footerBoxes{
+
+.footerBoxes {
     width: 96px;
     height: 64px;
     display: flex;
@@ -207,7 +229,8 @@ footer{
     align-items: center;
     border-radius: 10px;
 }
-.footertext{
+
+.footertext {
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 500;
@@ -217,7 +240,8 @@ footer{
     letter-spacing: 0.75px;
     color: #1A2A33;
 }
-.footerNumber{
+
+.footerNumber {
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 700;
@@ -227,27 +251,32 @@ footer{
     letter-spacing: 1.25px;
     color: #1A2A33;
 }
+
 .xScore {
     background: #31C3BD;
 }
+
 .ties {
     background: #A8BFC9;
 }
+
 .oScore {
     background: #F2B137;
 }
-.notification{
+
+.notification {
     display: flex;
     flex-direction: column;
     align-items: center;
     position: fixed;
-    transform:translateY(80%);
+    transform: translateY(80%);
     background: #1F3641;
     height: 228px;
     width: 100%;
     padding-top: 40px;
 }
-.resultNotification{
+
+.resultNotification {
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 700;
@@ -257,7 +286,8 @@ footer{
     letter-spacing: 0.875px;
     color: #A8BFC9;
 }
-.midSec{
+
+.midSec {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -265,11 +295,14 @@ footer{
     margin-top: 16px;
     margin-bottom: 24px;
 }
-.notYellowOimage{
+
+.notYellowOimage {
+    display: none;
     height: 30px;
     width: 30px;
 }
-.oWinstext{
+
+.oWinstext {
     font-family: 'Outfit';
     font-style: normal;
     font-weight: 700;
@@ -279,7 +312,18 @@ footer{
     color: #F2B137;
     margin-left: 8px;
 }
-.quitBut{
+.xWinstext {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 1.5px;
+    color: #31C3BD;
+    margin-left: 8px;
+}
+
+.quitBut {
     height: 52px;
     width: 76px;
     background: #A8BFC9;
@@ -296,7 +340,8 @@ footer{
     color: #1A2A33;
     margin-right: 16px;
 }
-.nextRoundBut{
+
+.nextRoundBut {
     height: 52px;
     width: 146px;
     background: #F2B137;
