@@ -17,7 +17,7 @@ body {
 }
 
 .newGame {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -64,6 +64,8 @@ body {
     border-radius: 10px;
     background: #1A2A33;
     margin-bottom: 17px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .cheseOcube {
@@ -132,6 +134,7 @@ body {
 
 .startGame {
     display: none;
+    flex-direction: column;
     margin-top: 24px;
     margin-left: 24px;
     margin-right: 24px;
@@ -312,6 +315,7 @@ footer {
     color: #F2B137;
     margin-left: 8px;
 }
+
 .xWinstext {
     font-family: 'Outfit';
     font-style: normal;
@@ -355,4 +359,108 @@ footer {
     text-align: center;
     letter-spacing: 1px;
     color: #1A2A33;
+    border: 0px;
+}
+
+.restart {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    transform: translateY(80%);
+    background: #1F3641;
+    height: 228px;
+    width: 100%;
+    padding-top: 61px;
+}
+
+.restartQuestion {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    color: #A8BFC9;
+}
+
+.cancel {
+    height: 52px;
+    width: 139px;
+    background: #A8BFC9;
+    box-shadow: inset 0px -4px 0px #6B8997;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.restartB {
+    height: 52px;
+    width: 151px;
+    background: #F2B137;
+    box-shadow: inset 0px -4px 0px #CC8B13;
+    border-radius: 10px;
+    margin-left: 16px;
+    margin-top: 24px;
+    border: 0px;
+}
+.tied{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    transform: translateY(80%);
+    background: #1F3641;
+    height: 228px;
+    width: 100%;
+    padding-top: 61px;
+}
+.tiedParagraph{
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    color: #A8BFC9;
+}
+.tiedButs{
+    margin-top: 24px;
+}
+.quitB{
+    height: 52px;
+    width: 76px;
+    background: #A8BFC9;
+    box-shadow: inset 0px -4px 0px #6B8997;
+    border-radius: 10px;
+    border: 0px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #1A2A33;
+}
+.nextRoundB{
+    height: 52px;
+    width: 146px;
+    left: 0px;
+    top: 0px;
+    border-radius: 10px;
+    background: #F2B137;
+    box-shadow: inset 0px -4px 0px #CC8B13;
+    border-radius: 10px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #1A2A33;
+    margin-left: 16px;
+    border: 0px;
 }
