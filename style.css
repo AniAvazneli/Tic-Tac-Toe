@@ -265,7 +265,7 @@ footer {
 }
 
 .notification {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     position: fixed;
