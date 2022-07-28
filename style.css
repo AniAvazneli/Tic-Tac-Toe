@@ -117,3 +117,197 @@ body{
     margin-bottom: 22px;
     margin-top: 14px;
 }
+
+.startGame{
+    display: none;
+    margin-top: 24px;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 64px;
+}
+.Hlogo{
+    width: 71.97px;
+    height: 32px;
+}
+.turnSection{
+    width: 96px;
+    height: 40px;
+    background: #1F3641;
+    box-shadow: inset 0px -4px 0px #10212A;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.turnImageX{
+    display: none;
+    width: 16px;
+    height: 16px;
+}
+.turnImageO{
+    /* display: none; */
+    width: 16px;
+    height: 16px;
+}
+.turnText{
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.875px;
+    color: #A8BFC9;
+}
+.arrow{
+    width: 40px;
+    height: 40px;
+    background: #A8BFC9;
+    box-shadow: inset 0px -4px 0px #6B8997;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.playground{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 20px;
+    row-gap: 20px;
+}
+.gamingButtons{
+    width: 96px;
+    height: 96px;
+    background: #1F3641;
+    box-shadow: inset 0px -8px 0px #10212A;
+    border-radius: 10px;
+    border: 0px;
+}
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.footerBoxes{
+    width: 96px;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.footertext{
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: 0.75px;
+    color: #1A2A33;
+}
+.footerNumber{
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: 1.25px;
+    color: #1A2A33;
+}
+.xScore {
+    background: #31C3BD;
+}
+.ties {
+    background: #A8BFC9;
+}
+.oScore {
+    background: #F2B137;
+}
+.notification{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    transform:translateY(80%);
+    background: #1F3641;
+    height: 228px;
+    width: 100%;
+    padding-top: 40px;
+}
+.resultNotification{
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.875px;
+    color: #A8BFC9;
+}
+.midSec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+.notYellowOimage{
+    height: 30px;
+    width: 30px;
+}
+.oWinstext{
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 1.5px;
+    color: #F2B137;
+    margin-left: 8px;
+}
+.quitBut{
+    height: 52px;
+    width: 76px;
+    background: #A8BFC9;
+    box-shadow: inset 0px -4px 0px #6B8997;
+    border-radius: 10px;
+    border: 0px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #1A2A33;
+    margin-right: 16px;
+}
+.nextRoundBut{
+    height: 52px;
+    width: 146px;
+    background: #F2B137;
+    box-shadow: inset 0px -4px 0px #CC8B13;
+    border-radius: 10px;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #1A2A33;
+}
