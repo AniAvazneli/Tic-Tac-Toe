@@ -76,14 +76,33 @@ body {
     height: 54px;
     width: 131.98524475097656px;
     border-radius: 10px;
-    background: #A8BFC9;
 }
-
-.choseX {
-    padding-left: 58px;
-    margin-right: 49px;
+.cheseXcube{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 54px;
+    width: 131.98524475097656px;
+    border-radius: 10px;
 }
-
+.ChoseX{
+    display: none;
+    height: 32px;
+    width: 32px;
+}
+.choseO{
+    display: none;
+    height: 32px;
+    width: 32px;
+}
+.notChoseX{
+    height: 32px;
+    width: 32px;
+}
+.notChoseO{
+    height: 32px;
+    width: 32px;
+}
 .reminder {
     font-weight: 500;
     font-size: 14px;
