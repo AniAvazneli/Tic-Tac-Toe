@@ -20,11 +20,16 @@ const WINNING_COMBINATIONS = [
   [2, 4, 6]
 ]
 
-const cellElements = document.querySelectorAll('[data-cell]')
-const board = document.getElementById('board')
+let xValues = [0, 1, 3];
+let oValues = [];
+// const stepsGrid = ["", "", "", "", "", "", "", "", ""];
+
+const cellElements = document.querySelectorAll('[data-cell]');
+const board = document.getElementById('board');
 
 
 //variables for chosen buttons
+let currentPlayer ;
 let xScores = document.getElementsByClassName('XandChosenNumber')[0];
 let tiesText = document.getElementsByClassName('tiesText')[0].innerHTML = 'TIES';
 let oScores = document.getElementsByClassName('oandChosenNumber')[0];
@@ -84,5 +89,12 @@ function playerChosesCPU() {
         document.getElementsByClassName('oandChosen')[0].innerHTML = 'O (YOU)';
         oScores.innerHTML = '0'
     }
+}
+ 
+for ( var i=0; i<cellElements.length; i++){
+    cellElements[i].addEventListener('click', function(e){
+        console.log(e.target);
+        e.target.classList.add('activeX');
+    })
 }
 

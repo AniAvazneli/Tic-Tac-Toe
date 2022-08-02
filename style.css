@@ -490,3 +490,9 @@ footer {
     margin-left: 16px;
     border: 0px;
 }
+.activeX{
+    background-image: url(./images/Ximagee.png);
+    background-repeat: no-repeat;
+    background-size: 40px, 40px;
+    background-position: 50%;
+}
