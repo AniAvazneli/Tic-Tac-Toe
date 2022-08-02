@@ -496,3 +496,10 @@ footer {
     background-size: 40px, 40px;
     background-position: 50%;
 }
+
+.activeX{
+    background-image: url(./images/ovalYellow.png);
+    background-repeat: no-repeat;
+    background-size: 40px, 40px;
+    background-position: 50%;
+}
