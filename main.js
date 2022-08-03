@@ -5,34 +5,17 @@ const chesenO = document.getElementById("cheseOcubeId");
 const vsCPU = document.getElementsByClassName("newGameCPU")[0];
 const vsPlayer = document.getElementsByClassName("newGamePlayer")[0];
 const SecStartGame = document.getElementsByClassName("startGame")[0];
-
-
-const X_CLASS = 'x'
-const CIRCLE_CLASS = 'circle'
-const WINNING_COMBINATIONS = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6]
-]
-
-let xValues = [0, 1, 3];
-let oValues = [];
-// const stepsGrid = ["", "", "", "", "", "", "", "", ""];
-
 const cellElements = document.querySelectorAll('[data-cell]');
-const board = document.getElementById('board');
+const xClass = 'xClass'
+const oClass = 'oClass'
 
 
 //variables for chosen buttons
-let currentPlayer ;
+let currentPlayer;
 let xScores = document.getElementsByClassName('XandChosenNumber')[0];
 let tiesText = document.getElementsByClassName('tiesText')[0].innerHTML = 'TIES';
 let oScores = document.getElementsByClassName('oandChosenNumber')[0];
+let circleTurn = false;
 
 
 // catch clicks and make moves
@@ -78,7 +61,7 @@ function playerChosesCPU() {
         document.getElementsByClassName('tiesNumber')[0].innerHTML = '0';
         document.getElementsByClassName('oandChosen')[0].innerHTML = 'O (CPU)';
         oScores.innerHTML = '0';
-    } else {
+    } else if (currentPlayer === 'O') {
         document.getElementsByClassName('newGame')[0].style.display = "none";
         SecStartGame.style.display = "flex";
         document.getElementsByClassName('turnImageO')[0].style.display = "flex";
@@ -90,11 +73,43 @@ function playerChosesCPU() {
         oScores.innerHTML = '0'
     }
 }
- 
-for ( var i=0; i<cellElements.length; i++){
-    cellElements[i].addEventListener('click', function(e){
-        console.log(e.target);
-        e.target.classList.add('activeX');
+
+
+
+// element click X or O
+
+startGame();
+
+function startGame() {
+    cellElements.forEach(cell => {
+        cell.addEventListener('click', handleClick, { once: true });
+        cell.addEventListener('mouseover', handHover);
     })
+}
+
+
+function handleClick(e) {
+    const cell = e.target;
+    console.log(circleTurn);
+    const currentClass = circleTurn ? oClass : xClass;
+    placeMark(cell, currentClass);
+    e.target.removeEventListener('mousover', handHover);
+    e.target.classList.remove("oClasshover");
+    e.target.classList.remove("xClasshover");
+}
+
+function placeMark(cell, currentClass) {
+    cell.classList.add(currentClass);
+    cell.classList.remove("uncklicked");
+    circleTurn = !circleTurn;
+}
+
+function handHover(e) {
+    let grid = e.target.classList;
+    if (grid.contains('uncklicked')) {
+        let hoverClass = circleTurn ? "oClasshover" : "xClasshover";
+        console.log(circleTurn);
+        grid.add(hoverClass);
+    }
 }
 

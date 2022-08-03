@@ -10,11 +10,13 @@
 body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     background-color: #1A2A33;
     width: 100%;
     font-family: 'Outfit';
     font-style: normal;
+    min-height: 100vh;
 }
 
 .newGame {
@@ -22,7 +24,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 119px;
     margin-left: 24px;
     margin-right: 24px;
     width: 327px;
@@ -490,15 +491,27 @@ footer {
     margin-left: 16px;
     border: 0px;
 }
-.activeX{
+.xClass{
     background-image: url(./images/Ximagee.png);
     background-repeat: no-repeat;
     background-size: 40px, 40px;
     background-position: 50%;
 }
+.xClasshover:hover{
+    background-image: url(./images/xhover.svg);
+    background-repeat: no-repeat;
+    background-size: 40px, 40px;
+    background-position: 50%;
+}
 
-.activeX{
+.oClass{
     background-image: url(./images/ovalYellow.png);
+    background-repeat: no-repeat;
+    background-size: 40px, 40px;
+    background-position: 50%;
+}
+.oClasshover:hover{
+    background-image: url(./images/oHover.svg);
     background-repeat: no-repeat;
     background-size: 40px, 40px;
     background-position: 50%;
