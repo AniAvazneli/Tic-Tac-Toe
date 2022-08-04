@@ -20,7 +20,10 @@ let oScores = document.getElementsByClassName('oandChosenNumber')[0];
 let circleTurn = false;
 let xArrey = [];
 let oArrey = [];
-let currentClass ;
+let currentClass;
+let xWins = 0;
+let oWins = 0;
+let ties = 0;
 
 const winningCombinations = [
     [0, 1, 2],
@@ -96,7 +99,7 @@ function playerChosesCPU() {
 
 // element click X or O
 
-startGame();
+// startGame();
 
 function startGame() {
     cellElements.forEach(cell => {
@@ -118,7 +121,18 @@ function handleClick(e) {
     placeMark(cell, currentClass);
     e.target.removeEventListener('mousover', handHover);
     removeHoverClass();
+    changeTurnImage();
     checkWin(currentClass);
+}
+
+function changeTurnImage() {
+    if (currentClass === xClass) {
+        document.getElementsByClassName("turnImageX")[0].style.display = 'none'
+        document.getElementsByClassName("turnImageO")[0].style.display = 'flex'
+    } else {
+        document.getElementsByClassName("turnImageX")[0].style.display = 'flex'
+        document.getElementsByClassName("turnImageO")[0].style.display = 'none'
+    }
 }
 
 function removeHoverClass() {
@@ -151,10 +165,17 @@ function checkWin(currentClass) {
         let catchWin = winningCombinations[i].every(index => {
             return currentClass === xClass ? xArrey.includes(index) : oArrey.includes(index);
         })
-        if (catchWin) {
+        if (catchWin && currentClass === xClass) {
             document.getElementsByClassName('resultNotification')[0].innerHTML = 'PLAYER 1 WINS!'
             winMessage.style.display = 'flex';
-        }else if(xArrey.length===5 && oArrey.length===4 && i===winningCombinations.length-1){
+
+        } else if (catchWin && currentClass === oClass) {
+            document.getElementsByClassName('resultNotification')[0].innerHTML = 'PLAYER 2 WINS!';
+            document.getElementsByClassName('notYellowXimage')[0].style.display = 'none';
+            document.getElementsByClassName('notYellowOimage')[0].style.display = 'flex';
+            document.getElementsByClassName('xWinstext')[0].style.color = '#F2B137';
+            winMessage.style.display = 'flex';
+        } else if (xArrey.length === 5 && oArrey.length === 4 && i === winningCombinations.length - 1) {
             winMessage.style.display = 'none';
             roundTied.style.display = 'flex';
         }
