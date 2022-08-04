@@ -99,7 +99,7 @@ function playerChosesCPU() {
 
 // element click X or O
 
-// startGame();
+startGame();
 
 function startGame() {
     cellElements.forEach(cell => {
@@ -172,7 +172,7 @@ function checkWin(currentClass) {
         } else if (catchWin && currentClass === oClass) {
             document.getElementsByClassName('resultNotification')[0].innerHTML = 'PLAYER 2 WINS!';
             document.getElementsByClassName('notYellowXimage')[0].style.display = 'none';
-            document.getElementsByClassName('notYellowOimage')[0].style.display = 'flex';
+            document.getElementsByClassName('notYellowOimage')[0].style.display = 'block';
             document.getElementsByClassName('xWinstext')[0].style.color = '#F2B137';
             winMessage.style.display = 'flex';
         } else if (xArrey.length === 5 && oArrey.length === 4 && i === winningCombinations.length - 1) {
