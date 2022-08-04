@@ -16,6 +16,19 @@ let xScores = document.getElementsByClassName('XandChosenNumber')[0];
 let tiesText = document.getElementsByClassName('tiesText')[0].innerHTML = 'TIES';
 let oScores = document.getElementsByClassName('oandChosenNumber')[0];
 let circleTurn = false;
+let xArrey = [];
+let oArrey = [];
+
+const winningCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ]
 
 
 // catch clicks and make moves
@@ -90,17 +103,33 @@ function startGame() {
 
 function handleClick(e) {
     const cell = e.target;
-    console.log(circleTurn);
     const currentClass = circleTurn ? oClass : xClass;
+    console.log(currentClass);
+    if(!circleTurn){
+        xArrey.push(Number(this.getAttribute("cellIndex")));
+    }else{
+        oArrey.push(Number(this.getAttribute("cellIndex")));
+    }
     placeMark(cell, currentClass);
     e.target.removeEventListener('mousover', handHover);
-    e.target.classList.remove("oClasshover");
-    e.target.classList.remove("xClasshover");
+    removeHoverClass();
+    checkWin(currentClass);
+}
+
+function removeHoverClass(){
+    for (let i=0; i<cellElements.length; i++){
+        cellElements[i].classList.remove("oClasshover");
+        cellElements[i].classList.remove("xClasshover");
+    }
 }
 
 function placeMark(cell, currentClass) {
     cell.classList.add(currentClass);
     cell.classList.remove("uncklicked");
+    changeTurnes();
+}
+
+function changeTurnes(){
     circleTurn = !circleTurn;
 }
 
@@ -108,8 +137,24 @@ function handHover(e) {
     let grid = e.target.classList;
     if (grid.contains('uncklicked')) {
         let hoverClass = circleTurn ? "oClasshover" : "xClasshover";
-        console.log(circleTurn);
         grid.add(hoverClass);
     }
 }
 
+function checkWin(currentClass) {
+    // return winningCombinations.find(combination => {
+    //   return combination.every(index => {
+    //     console.log(index);
+    //     return currentClass === xClass ? oArrey.includes(index) : xArrey.includes(index);
+    //   })
+    // })
+    for (let i=0; i<winningCombinations.length; i++){
+        console.log(winningCombinations[i],oArrey);
+        let lswitch = winningCombinations[i].every(index => {
+                return currentClass === xClass ? xArrey.includes(index) : oArrey.includes(index);
+              }) 
+              if (lswitch){
+                return "game is ower"
+              }
+    }
+  }
