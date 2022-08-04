@@ -8,22 +8,26 @@ const SecStartGame = document.getElementsByClassName("startGame")[0];
 const cellElements = document.querySelectorAll('[data-cell]');
 const winMessage = document.getElementsByClassName('notification')[0];
 const roundTied = document.getElementsByClassName('tied')[0];
+const restartSec = document.getElementsByClassName('restart')[0];
+const restartB = document.getElementsByClassName('restartB')[0];
+const cancel = document.getElementsByClassName('cancel')[0];
 const xClass = 'xClass'
 const oClass = 'oClass'
 
 
 //variables for chosen buttons
 let currentPlayer;
-let xScores = document.getElementsByClassName('XandChosenNumber')[0];
 let tiesText = document.getElementsByClassName('tiesText')[0].innerHTML = 'TIES';
+let xScores = document.getElementsByClassName('XandChosenNumber')[0];
+let tieScores = document.getElementsByClassName('tiesNumber')[0];
 let oScores = document.getElementsByClassName('oandChosenNumber')[0];
 let circleTurn = false;
 let xArrey = [];
 let oArrey = [];
 let currentClass;
-let xWins = 0;
-let oWins = 0;
-let ties = 0;
+let xScoresWinn = 0 ;
+let oScoresWin = 0 ;
+let tieScoresWin = 0 ;
 
 const winningCombinations = [
     [0, 1, 2],
@@ -40,10 +44,11 @@ const winningCombinations = [
 // catch clicks and make moves
 chosenX.addEventListener('click', palyerIsX);
 chesenO.addEventListener('click', palyerIsO);
-vsCPU.addEventListener('click', playerChosesCPU);
-vsPlayer.addEventListener('click', playerChosesCPU);
-
-// vsPlayer.addEventListener('click');
+// vsCPU.addEventListener('click', playerChosesCPU);
+vsPlayer.addEventListener('click', playerChosesMulty);
+restartSec.addEventListener('click', restartGamge);
+restartB.addEventListener('click', restartFunc);
+// cancel.addEventListener('click', cancelFunc);
 
 
 // functions for clicks :
@@ -71,27 +76,27 @@ function palyerIsO() {
 }
 
 // 3. player choses CPU 
-function playerChosesCPU() {
+function playerChosesMulty() {
     if (currentPlayer === 'X') {
         document.getElementsByClassName('newGame')[0].style.display = "none";
         SecStartGame.style.display = "flex";
         document.getElementsByClassName('turnImageX')[0].style.display = "flex";
         document.getElementsByClassName('XandChosen')[0].innerHTML = 'X (YOU)';
-        xScores.innerHTML = '0';
+        xScores.innerHTML = 0;
         tiesText;
-        document.getElementsByClassName('tiesNumber')[0].innerHTML = '0';
+        tieScores.innerHTML = 0;
         document.getElementsByClassName('oandChosen')[0].innerHTML = 'O (CPU)';
-        oScores.innerHTML = '0';
+        oScores.innerHTML = 0;
     } else if (currentPlayer === 'O') {
         document.getElementsByClassName('newGame')[0].style.display = "none";
         SecStartGame.style.display = "flex";
         document.getElementsByClassName('turnImageO')[0].style.display = "flex";
         document.getElementsByClassName('XandChosen')[0].innerHTML = 'X (CPU)';
-        xScores.innerHTML = '0';
+        xScores.innerHTML = 0;
         tiesText;
-        document.getElementsByClassName('tiesNumber')[0].innerHTML = '0';
+        tieScores.innerHTML = 0;
         document.getElementsByClassName('oandChosen')[0].innerHTML = 'O (YOU)';
-        oScores.innerHTML = '0'
+        oScores.innerHTML = 0;
     }
 }
 
@@ -112,7 +117,6 @@ function startGame() {
 function handleClick(e) {
     const cell = e.target;
     currentClass = circleTurn ? oClass : xClass;
-    console.log(currentClass);
     if (!circleTurn) {
         xArrey.push(Number(this.getAttribute("cellIndex")));
     } else {
@@ -167,6 +171,8 @@ function checkWin(currentClass) {
         })
         if (catchWin && currentClass === xClass) {
             document.getElementsByClassName('resultNotification')[0].innerHTML = 'PLAYER 1 WINS!'
+            xScoresWinn++ ;
+            xScores.innerHTML = xScoresWinn ;
             winMessage.style.display = 'flex';
 
         } else if (catchWin && currentClass === oClass) {
@@ -174,10 +180,35 @@ function checkWin(currentClass) {
             document.getElementsByClassName('notYellowXimage')[0].style.display = 'none';
             document.getElementsByClassName('notYellowOimage')[0].style.display = 'block';
             document.getElementsByClassName('xWinstext')[0].style.color = '#F2B137';
+            oScoresWin++ ;
+            oScores.innerHTML = oScoresWin ;
             winMessage.style.display = 'flex';
         } else if (xArrey.length === 5 && oArrey.length === 4 && i === winningCombinations.length - 1) {
             winMessage.style.display = 'none';
             roundTied.style.display = 'flex';
+            tieScoresWin++ ;
+            tieScores.innerHTML = tieScoresWin ;
         }
     }
 }
+
+function restartGamge(){
+    winMessage.style.display = 'none';
+    roundTied.style.display = 'none';
+    restartSec.style.display = 'flex';
+}
+
+function restartFunc(){
+    restartSec.style.display = 'none';
+    cellElements.forEach(cell => {
+        cell.classList.remove('xClass', 'oClass');
+    })
+    xArrey = [];
+    oArrey = [];
+    console.log(xArrey, oArrey);
+    startGame();
+}
+
+// function cancelFunc(){
+//     restartSec.style.display = 'none';
+// }
