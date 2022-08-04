@@ -152,11 +152,10 @@ function checkWin(currentClass) {
             return currentClass === xClass ? xArrey.includes(index) : oArrey.includes(index);
         })
         if (catchWin) {
-            // console.log('winner is '+currentClass );
-            // return "game is ower"
             document.getElementsByClassName('resultNotification')[0].innerHTML = 'PLAYER 1 WINS!'
             winMessage.style.display = 'flex';
-        }else{
+        }else if(xArrey.length===5 && oArrey.length===4 && i===winningCombinations.length-1){
+            winMessage.style.display = 'none';
             roundTied.style.display = 'flex';
         }
     }
