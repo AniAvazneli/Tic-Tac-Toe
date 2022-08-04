@@ -11,6 +11,9 @@ const roundTied = document.getElementsByClassName('tied')[0];
 const restartSec = document.getElementsByClassName('restart')[0];
 const restartB = document.getElementsByClassName('restartB')[0];
 const cancel = document.getElementsByClassName('cancel')[0];
+const quitB = document.getElementsByClassName('qButton')[0];
+const defNewGame = document.getElementsByClassName('newGame')[0];
+const nextRound = document.getElementsByClassName('nextRoundB')[0];
 const xClass = 'xClass'
 const oClass = 'oClass'
 
@@ -25,9 +28,9 @@ let circleTurn = false;
 let xArrey = [];
 let oArrey = [];
 let currentClass;
-let xScoresWinn = 0 ;
-let oScoresWin = 0 ;
-let tieScoresWin = 0 ;
+let xScoresWinn = 0;
+let oScoresWin = 0;
+let tieScoresWin = 0;
 
 const winningCombinations = [
     [0, 1, 2],
@@ -49,6 +52,9 @@ vsPlayer.addEventListener('click', playerChosesMulty);
 restart.addEventListener('click', restartGamge);
 restartB.addEventListener('click', restartFunc);
 cancel.addEventListener('click', cancelFunc);
+quitB.addEventListener('click', quitFunc);
+nextRound.addEventListener('click', nextFunc);
+
 
 
 // functions for clicks :
@@ -171,8 +177,8 @@ function checkWin(currentClass) {
         })
         if (catchWin && currentClass === xClass) {
             document.getElementsByClassName('resultNotification')[0].innerHTML = 'PLAYER 1 WINS!'
-            xScoresWinn++ ;
-            xScores.innerHTML = xScoresWinn ;
+            xScoresWinn++;
+            xScores.innerHTML = xScoresWinn;
             winMessage.style.display = 'flex';
 
         } else if (catchWin && currentClass === oClass) {
@@ -180,35 +186,59 @@ function checkWin(currentClass) {
             document.getElementsByClassName('notYellowXimage')[0].style.display = 'none';
             document.getElementsByClassName('notYellowOimage')[0].style.display = 'block';
             document.getElementsByClassName('xWinstext')[0].style.color = '#F2B137';
-            oScoresWin++ ;
-            oScores.innerHTML = oScoresWin ;
+            oScoresWin++;
+            oScores.innerHTML = oScoresWin;
             winMessage.style.display = 'flex';
         } else if (xArrey.length === 5 && oArrey.length === 4 && i === winningCombinations.length - 1) {
             winMessage.style.display = 'none';
             roundTied.style.display = 'flex';
-            tieScoresWin++ ;
-            tieScores.innerHTML = tieScoresWin ;
+            tieScoresWin++;
+            tieScores.innerHTML = tieScoresWin;
         }
     }
 }
 
-function restartGamge(){
+function restartGamge() {
     winMessage.style.display = 'none';
     roundTied.style.display = 'none';
     restartSec.style.display = 'flex';
 }
 
-function restartFunc(){
+
+//needes to fish restart hovers 
+function restartFunc() {
     restartSec.style.display = 'none';
     cellElements.forEach(cell => {
         cell.classList.remove('xClass', 'oClass');
+        cell.classList.add("oClasshover", "xClasshover");
     })
     xArrey = [];
     oArrey = [];
-    console.log(xArrey, oArrey);
     startGame();
 }
 
-function cancelFunc(){
+function cancelFunc() {
     restartSec.style.display = 'none';
+}
+
+function quitFunc(){
+    winMessage.style.display = 'none';
+    roundTied.style.display = 'none';
+    SecStartGame.style.display = "none";
+    defNewGame.style.display = "flex";
+    cellElements.forEach(cell => {
+        cell.classList.remove('xClass', 'oClass');
+        cell.classList.add("oClasshover", "xClasshover");
+    })
+}
+
+function nextFunc(){
+    winMessage.style.display = 'none';
+    cellElements.forEach(cell => {
+        cell.classList.remove('xClass', 'oClass');
+        cell.classList.add("oClasshover", "xClasshover");
+    })
+    xArrey = [];
+    oArrey = [];
+    startGame();
 }
