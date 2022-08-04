@@ -6,6 +6,8 @@ const vsCPU = document.getElementsByClassName("newGameCPU")[0];
 const vsPlayer = document.getElementsByClassName("newGamePlayer")[0];
 const SecStartGame = document.getElementsByClassName("startGame")[0];
 const cellElements = document.querySelectorAll('[data-cell]');
+const winMessage = document.getElementsByClassName('notification')[0];
+const roundTied = document.getElementsByClassName('tied')[0];
 const xClass = 'xClass'
 const oClass = 'oClass'
 
@@ -18,6 +20,7 @@ let oScores = document.getElementsByClassName('oandChosenNumber')[0];
 let circleTurn = false;
 let xArrey = [];
 let oArrey = [];
+let currentClass ;
 
 const winningCombinations = [
     [0, 1, 2],
@@ -28,13 +31,15 @@ const winningCombinations = [
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
-  ]
+]
 
 
 // catch clicks and make moves
 chosenX.addEventListener('click', palyerIsX);
 chesenO.addEventListener('click', palyerIsO);
 vsCPU.addEventListener('click', playerChosesCPU);
+vsPlayer.addEventListener('click', playerChosesCPU);
+
 // vsPlayer.addEventListener('click');
 
 
@@ -103,11 +108,11 @@ function startGame() {
 
 function handleClick(e) {
     const cell = e.target;
-    const currentClass = circleTurn ? oClass : xClass;
+    currentClass = circleTurn ? oClass : xClass;
     console.log(currentClass);
-    if(!circleTurn){
+    if (!circleTurn) {
         xArrey.push(Number(this.getAttribute("cellIndex")));
-    }else{
+    } else {
         oArrey.push(Number(this.getAttribute("cellIndex")));
     }
     placeMark(cell, currentClass);
@@ -116,8 +121,8 @@ function handleClick(e) {
     checkWin(currentClass);
 }
 
-function removeHoverClass(){
-    for (let i=0; i<cellElements.length; i++){
+function removeHoverClass() {
+    for (let i = 0; i < cellElements.length; i++) {
         cellElements[i].classList.remove("oClasshover");
         cellElements[i].classList.remove("xClasshover");
     }
@@ -129,7 +134,7 @@ function placeMark(cell, currentClass) {
     changeTurnes();
 }
 
-function changeTurnes(){
+function changeTurnes() {
     circleTurn = !circleTurn;
 }
 
@@ -142,19 +147,17 @@ function handHover(e) {
 }
 
 function checkWin(currentClass) {
-    // return winningCombinations.find(combination => {
-    //   return combination.every(index => {
-    //     console.log(index);
-    //     return currentClass === xClass ? oArrey.includes(index) : xArrey.includes(index);
-    //   })
-    // })
-    for (let i=0; i<winningCombinations.length; i++){
-        console.log(winningCombinations[i],oArrey);
-        let lswitch = winningCombinations[i].every(index => {
-                return currentClass === xClass ? xArrey.includes(index) : oArrey.includes(index);
-              }) 
-              if (lswitch){
-                return "game is ower"
-              }
+    for (let i = 0; i < winningCombinations.length; i++) {
+        let catchWin = winningCombinations[i].every(index => {
+            return currentClass === xClass ? xArrey.includes(index) : oArrey.includes(index);
+        })
+        if (catchWin) {
+            // console.log('winner is '+currentClass );
+            // return "game is ower"
+            document.getElementsByClassName('resultNotification')[0].innerHTML = 'PLAYER 1 WINS!'
+            winMessage.style.display = 'flex';
+        }else{
+            roundTied.style.display = 'flex';
+        }
     }
-  }
+}
