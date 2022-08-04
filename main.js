@@ -46,9 +46,9 @@ chosenX.addEventListener('click', palyerIsX);
 chesenO.addEventListener('click', palyerIsO);
 // vsCPU.addEventListener('click', playerChosesCPU);
 vsPlayer.addEventListener('click', playerChosesMulty);
-restartSec.addEventListener('click', restartGamge);
+restart.addEventListener('click', restartGamge);
 restartB.addEventListener('click', restartFunc);
-// cancel.addEventListener('click', cancelFunc);
+cancel.addEventListener('click', cancelFunc);
 
 
 // functions for clicks :
@@ -209,6 +209,6 @@ function restartFunc(){
     startGame();
 }
 
-// function cancelFunc(){
-//     restartSec.style.display = 'none';
-// }
+function cancelFunc(){
+    restartSec.style.display = 'none';
+}
