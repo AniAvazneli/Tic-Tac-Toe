@@ -11,9 +11,12 @@ const roundTied = document.getElementsByClassName('tied')[0];
 const restartSec = document.getElementsByClassName('restart')[0];
 const restartB = document.getElementsByClassName('restartB')[0];
 const cancel = document.getElementsByClassName('cancel')[0];
-const quitB = document.getElementsByClassName('qButton')[0];
+const quitB_1 = document.getElementsByClassName('qButton')[0];
+const quitB_2 = document.getElementsByClassName('qButton')[1];
 const defNewGame = document.getElementsByClassName('newGame')[0];
-const nextRound = document.getElementsByClassName('nextRoundB')[0];
+const nextRound_1 = document.getElementsByClassName('nextRoundB')[0];
+const nextRound_2 = document.getElementsByClassName('nextRoundB')[1];
+const starter = document.getElementsByClassName('newGame')[0];
 const xClass = 'xClass'
 const oClass = 'oClass'
 
@@ -27,7 +30,7 @@ let oScores = document.getElementsByClassName('oandChosenNumber')[0];
 let circleTurn = false;
 let xArrey = [];
 let oArrey = [];
-let currentClass;
+let currentClass ;
 let xScoresWinn = 0;
 let oScoresWin = 0;
 let tieScoresWin = 0;
@@ -52,9 +55,10 @@ vsPlayer.addEventListener('click', playerChosesMulty);
 restart.addEventListener('click', restartGamge);
 restartB.addEventListener('click', restartFunc);
 cancel.addEventListener('click', cancelFunc);
-quitB.addEventListener('click', quitFunc);
-nextRound.addEventListener('click', nextFunc);
-
+quitB_1.addEventListener('click', quitFunc);
+nextRound_1.addEventListener('click', nextFunc);
+quitB_2.addEventListener('click', quitFunc);
+nextRound_2.addEventListener('click', nextFunc);
 
 
 // functions for clicks :
@@ -210,11 +214,20 @@ function restartFunc() {
     restartSec.style.display = 'none';
     cellElements.forEach(cell => {
         cell.classList.remove('xClass', 'oClass');
-        cell.classList.add("oClasshover", "xClasshover");
+        cell.classList.remove("oClasshover", "xClasshover");
+        cell.classList.add('uncklicked');
     })
+    currentClass = null;
     xArrey = [];
     oArrey = [];
+    xScoresWinn = 0;
+    oScoresWin = 0;
+    tieScoresWin = 0;
+    xScores.innerHTML = xScoresWinn;
+    oScores.innerHTML = oScoresWin;
+    tieScores.innerHTML = tieScoresWin;
     startGame();
+    currentClass = xClass;
 }
 
 function cancelFunc() {
@@ -223,22 +236,35 @@ function cancelFunc() {
 
 function quitFunc(){
     winMessage.style.display = 'none';
+    SecStartGame.style.display = 'none';
     roundTied.style.display = 'none';
-    SecStartGame.style.display = "none";
-    defNewGame.style.display = "flex";
+    starter.style.display = 'flex';
     cellElements.forEach(cell => {
         cell.classList.remove('xClass', 'oClass');
-        cell.classList.add("oClasshover", "xClasshover");
+        cell.classList.remove("oClasshover", "xClasshover");
+        cell.classList.add('uncklicked');
     })
+    xArrey = [];
+    oArrey = [];
+    xScoresWinn = 0;
+    oScoresWin = 0;
+    tieScoresWin = 0;
+    xScores.innerHTML = xScoresWinn;
+    oScores.innerHTML = oScoresWin;
+    tieScores.innerHTML = tieScoresWin;
+    currentClass = xClass;
 }
 
 function nextFunc(){
     winMessage.style.display = 'none';
     cellElements.forEach(cell => {
         cell.classList.remove('xClass', 'oClass');
-        cell.classList.add("oClasshover", "xClasshover");
+        cell.classList.remove("oClasshover", "xClasshover");
+        cell.classList.add('uncklicked');
     })
+    currentClass = null;
     xArrey = [];
     oArrey = [];
     startGame();
+    currentClass = xClass;
 }
