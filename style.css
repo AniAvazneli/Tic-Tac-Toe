@@ -118,6 +118,7 @@ button{
     cursor: pointer;
 }
 .newGameCPU {
+    display: none;
     font-family: 'Outfit';
     font-style: normal;
     height: 56px;
@@ -136,6 +137,7 @@ button{
 }
 
 .newGamePlayer {
+    margin-top: 32px;
     font-family: 'Outfit';
     font-style: normal;
     height: 56px;

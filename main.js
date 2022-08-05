@@ -1,5 +1,4 @@
 'use strict';
-// catch html elements
 const chosenX = document.getElementById("cheseXcubeId");
 const chesenO = document.getElementById("cheseOcubeId");
 const vsCPU = document.getElementsByClassName("newGameCPU")[0];
@@ -20,8 +19,6 @@ const starter = document.getElementsByClassName('newGame')[0];
 const xClass = 'xClass'
 const oClass = 'oClass'
 
-
-//variables for chosen buttons
 let currentPlayer;
 let tiesText = document.getElementsByClassName('tiesText')[0].innerHTML = 'TIES';
 let xScores = document.getElementsByClassName('XandChosenNumber')[0];
@@ -30,7 +27,7 @@ let oScores = document.getElementsByClassName('oandChosenNumber')[0];
 let circleTurn = false;
 let xArrey = [];
 let oArrey = [];
-let currentClass ;
+let currentClass;
 let xScoresWinn = 0;
 let oScoresWin = 0;
 let tieScoresWin = 0;
@@ -46,11 +43,9 @@ const winningCombinations = [
     [2, 4, 6]
 ]
 
-
-// catch clicks and make moves
 chosenX.addEventListener('click', palyerIsX);
 chesenO.addEventListener('click', palyerIsO);
-// vsCPU.addEventListener('click', playerChosesCPU);
+vsCPU.addEventListener('click', playerChosesCPU);
 vsPlayer.addEventListener('click', playerChosesMulty);
 restart.addEventListener('click', restartGamge);
 restartB.addEventListener('click', restartFunc);
@@ -60,10 +55,6 @@ nextRound_1.addEventListener('click', nextFunc);
 quitB_2.addEventListener('click', quitFunc);
 nextRound_2.addEventListener('click', nextFunc);
 
-
-// functions for clicks :
-
-// 1. if person choses X mark
 function palyerIsX() {
     currentPlayer = 'X';
     chosenX.style.backgroundColor = "#A8BFC9";
@@ -74,7 +65,6 @@ function palyerIsX() {
     document.getElementsByClassName('notChoseO')[0].style.display = "flex";
 }
 
-// 2. if person choses O mark
 function palyerIsO() {
     currentPlayer = 'O';
     chesenO.style.backgroundColor = "#A8BFC9";
@@ -85,7 +75,6 @@ function palyerIsO() {
     document.getElementsByClassName('notChoseX')[0].style.display = "flex";
 }
 
-// 3. player choses CPU 
 function playerChosesMulty() {
     if (currentPlayer === 'X') {
         document.getElementsByClassName('newGame')[0].style.display = "none";
@@ -110,9 +99,29 @@ function playerChosesMulty() {
     }
 }
 
-
-
-// element click X or O
+function playerChosesCPU(){
+    if (currentPlayer === 'X') {
+        document.getElementsByClassName('newGame')[0].style.display = "none";
+        SecStartGame.style.display = "flex";
+        document.getElementsByClassName('turnImageX')[0].style.display = "flex";
+        document.getElementsByClassName('XandChosen')[0].innerHTML = 'X (YOU)';
+        xScores.innerHTML = 0;
+        tiesText;
+        tieScores.innerHTML = 0;
+        document.getElementsByClassName('oandChosen')[0].innerHTML = 'O (CPU)';
+        oScores.innerHTML = 0;
+    } else if (currentPlayer === 'O') {
+        document.getElementsByClassName('newGame')[0].style.display = "none";
+        SecStartGame.style.display = "flex";
+        document.getElementsByClassName('turnImageO')[0].style.display = "flex";
+        document.getElementsByClassName('XandChosen')[0].innerHTML = 'X (CPU)';
+        xScores.innerHTML = 0;
+        tiesText;
+        tieScores.innerHTML = 0;
+        document.getElementsByClassName('oandChosen')[0].innerHTML = 'O (YOU)';
+        oScores.innerHTML = 0;
+    }
+}
 
 startGame();
 
@@ -194,7 +203,7 @@ function checkWin(currentClass) {
             oScores.innerHTML = oScoresWin;
             winMessage.style.display = 'flex';
         } else if (xArrey.length === 5 && oArrey.length === 4 && i === winningCombinations.length - 1) {
-            circleTurn = false ;
+            circleTurn = false;
             winMessage.style.display = 'none';
             roundTied.style.display = 'flex';
             tieScoresWin++;
@@ -209,8 +218,6 @@ function restartGamge() {
     restartSec.style.display = 'flex';
 }
 
-
-//needes to fish restart hovers 
 function restartFunc() {
     restartSec.style.display = 'none';
     cellElements.forEach(cell => {
@@ -228,27 +235,26 @@ function restartFunc() {
     oScores.innerHTML = oScoresWin;
     tieScores.innerHTML = tieScoresWin;
     startGame();
-    circleTurn = false ;
+    circleTurn = false;
 }
 
 function cancelFunc() {
     restartSec.style.display = 'none';
 }
 
-function quitFunc(){
+function quitFunc() {
     location.reload();
 }
 
-nextRound_1.addEventListener('click', ()=> {
+nextRound_1.addEventListener('click', () => {
     roundTied.style.display = 'none';
 })
 
-nextRound_2.addEventListener('click', ()=> {
+nextRound_2.addEventListener('click', () => {
     roundTied.style.display = 'none';
 })
 
-
-function nextFunc(){
+function nextFunc() {
     winMessage.style.display = 'none';
     cellElements.forEach(cell => {
         cell.classList.remove('xClass', 'oClass');
@@ -259,6 +265,6 @@ function nextFunc(){
     xArrey = [];
     oArrey = [];
     startGame();
-    circleTurn = false ;
+    circleTurn = false;
 }
 
