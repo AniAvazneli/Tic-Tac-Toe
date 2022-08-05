@@ -194,6 +194,7 @@ function checkWin(currentClass) {
             oScores.innerHTML = oScoresWin;
             winMessage.style.display = 'flex';
         } else if (xArrey.length === 5 && oArrey.length === 4 && i === winningCombinations.length - 1) {
+            circleTurn = false ;
             winMessage.style.display = 'none';
             roundTied.style.display = 'flex';
             tieScoresWin++;
@@ -227,7 +228,7 @@ function restartFunc() {
     oScores.innerHTML = oScoresWin;
     tieScores.innerHTML = tieScoresWin;
     startGame();
-    currentClass = xClass;
+    circleTurn = false ;
 }
 
 function cancelFunc() {
@@ -235,25 +236,17 @@ function cancelFunc() {
 }
 
 function quitFunc(){
-    winMessage.style.display = 'none';
-    SecStartGame.style.display = 'none';
-    roundTied.style.display = 'none';
-    starter.style.display = 'flex';
-    cellElements.forEach(cell => {
-        cell.classList.remove('xClass', 'oClass');
-        cell.classList.remove("oClasshover", "xClasshover");
-        cell.classList.add('uncklicked');
-    })
-    xArrey = [];
-    oArrey = [];
-    xScoresWinn = 0;
-    oScoresWin = 0;
-    tieScoresWin = 0;
-    xScores.innerHTML = xScoresWinn;
-    oScores.innerHTML = oScoresWin;
-    tieScores.innerHTML = tieScoresWin;
-    currentClass = xClass;
+    location.reload();
 }
+
+nextRound_1.addEventListener('click', ()=> {
+    roundTied.style.display = 'none';
+})
+
+nextRound_2.addEventListener('click', ()=> {
+    roundTied.style.display = 'none';
+})
+
 
 function nextFunc(){
     winMessage.style.display = 'none';
@@ -266,5 +259,6 @@ function nextFunc(){
     xArrey = [];
     oArrey = [];
     startGame();
-    currentClass = xClass;
+    circleTurn = false ;
 }
+
